@@ -1,103 +1,197 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_filters %}
 
-{% block title %}BILL-MAKER - Smart Restaurant Management Software{% endblock %}
+{% block title %}BILL-MAKER - Comprehensive Restaurant Billing Software{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="bg-dark-200 text-white relative overflow-hidden">
-    <!-- Gradient Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-dark-300 via-dark-200 to-dark-100"></div>
-    
-    <!-- Animated Grid Background -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="grid-pattern"></div>
+<!-- Hero Section with Background Video -->
+<section class="relative overflow-hidden bg-black">
+  <!-- Background Video -->
+  <video class="absolute inset-0 object-cover w-full h-full" autoplay loop muted poster="{% static 'img/hero-poster.jpg' %}">
+    <source src="{% static 'video/hero.mp4' %}" type="video/mp4">
+  </video>
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black opacity-60"></div>
+  <div class="relative z-10 flex items-center justify-center min-h-screen text-center px-4">
+    <div>
+      <h1 class="text-5xl sm:text-7xl font-bold text-white mb-4">Welcome to BILL-<span class="text-neon-purple">MAKER</span></h1>
+      <p class="text-xl sm:text-2xl text-gray-300 mb-8">
+        Revolutionize your restaurant operations with our all-in-one billing, inventory, and analytics solution.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#features" class="btn-primary">Discover Features</a>
+        <a href="#contact" class="btn-outline">Contact Us</a>
+      </div>
     </div>
-
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right">
-                <h1 class="text-6xl lg:text-7xl font-bold mb-6">
-                    BILL-<span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-pink animate-gradient">MAKER</span>
-                </h1>
-                <p class="text-2xl text-gray-300 mb-8">
-                    Next-Gen Restaurant Management System with Advanced Billing & Analytics
-                </p>
-                <div class="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row">
-                    <a href="#demo" class="group px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-neon-blue/50">
-                        <span class="flex items-center justify-center">
-                            <svg class="w-6 h-6 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
-                            Start Free Trial
-                        </span>
-                    </a>
-                    <a href="#features" class="px-8 py-4 border-2 border-neon-blue rounded-xl font-semibold hover:bg-neon-blue/10 transition-all duration-300">
-                        Explore Features
-                    </a>
-                </div>
-            </div>
-            <div class="hidden lg:block" data-aos="fade-left">
-                <div class="relative">
-                    <div class="absolute inset-0 bg-gradient-to-r from-neon-blue/20 to-neon-pink/20 blur-2xl animate-pulse"></div>
-                    <img src="{% static 'img/dashboard-preview.png' %}" alt="BILL-MAKER Dashboard" class="relative rounded-2xl shadow-2xl animate-float">
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
 
-<!-- Features Showcase -->
-<section class="bg-dark-100 py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-20">
-            <h2 class="text-4xl font-bold text-white mb-6" data-aos="fade-up">
-                Complete Restaurant Management Solution
-            </h2>
-            <p class="text-xl text-gray-400 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-                Everything you need to run your restaurant efficiently in one powerful platform
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Feature Cards -->
-            {% for feature in features %}
-            <div class="feature-card bg-dark-50 p-8 rounded-xl border border-neon-blue/20 hover:border-neon-blue/50 transition-all duration-500" data-aos="fade-up" data-aos-delay="{{ forloop.counter|multiply:100 }}">
-                <div class="w-14 h-14 bg-gradient-to-br from-neon-blue to-neon-purple rounded-lg flex items-center justify-center mb-6">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        {{ feature.icon|safe }}
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-4">{{ feature.title }}</h3>
-                <p class="text-gray-400">{{ feature.description }}</p>
-            </div>
-            {% endfor %}
-        </div>
+<!-- Why Choose BILL-MAKER Section -->
+<section id="why-choose" class="py-24 bg-gray-900">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h2 class="text-4xl font-bold text-white mb-4" data-aos="fade-up">Why Choose BILL-MAKER?</h2>
+    <p class="text-xl text-gray-400 mb-10" data-aos="fade-up" data-aos-delay="100">
+      The ultimate toolset for modern restaurant management.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="p-6 bg-gray-800 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-2xl font-bold text-blue-400 mb-2">Smart Billing</h3>
+        <p class="text-gray-300">Generate professional bills instantly with customizable templates and split billing options.</p>
+      </div>
+      <div class="p-6 bg-gray-800 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-2xl font-bold text-blue-400 mb-2">Inventory Control</h3>
+        <p class="text-gray-300">Keep track of ingredients and stock levels effortlessly with real-time updates.</p>
+      </div>
+      <div class="p-6 bg-gray-800 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="text-2xl font-bold text-blue-400 mb-2">In-Depth Analytics</h3>
+        <p class="text-gray-300">Gain actionable insights with detailed reporting and performance metrics.</p>
+      </div>
     </div>
-</section>
-
-<!-- Key Benefits -->
-<section class="bg-dark-200 py-24 relative overflow-hidden">
-    <!-- More sections... -->
+  </div>
 </section>
 
 <!-- Pricing Section -->
-<section class="bg-dark-100 py-24">
-    <!-- Pricing content... -->
+<section id="pricing" class="py-24 bg-gray-950">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <div class="mb-16">
+      <h2 class="text-4xl font-bold text-white mb-4" data-aos="fade-up">Simple Pricing</h2>
+      <p class="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="100">
+        Flexible plans tailored for every business size.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="p-8 bg-gray-800 rounded-xl border border-gray-700 transition-transform hover:-translate-y-2" data-aos="fade-up">
+        <h3 class="text-2xl font-bold text-white mb-4">Starter</h3>
+        <p class="text-4xl font-bold text-blue-400 mb-4">$29 <span class="text-xl text-gray-400">/mo</span></p>
+        <ul class="text-left text-gray-300 mb-6 space-y-2">
+          <li>Essential Billing Features</li>
+          <li>Basic Inventory Tracking</li>
+          <li>Standard Analytics</li>
+        </ul>
+        <a href="#demo" class="btn-primary">Get Started</a>
+      </div>
+      <div class="p-8 bg-gray-800 rounded-xl border border-gray-700 transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-2xl font-bold text-white mb-4">Professional</h3>
+        <p class="text-4xl font-bold text-blue-400 mb-4">$59 <span class="text-xl text-gray-400">/mo</span></p>
+        <ul class="text-left text-gray-300 mb-6 space-y-2">
+          <li>All Starter Features</li>
+          <li>Advanced Inventory Management</li>
+          <li>Enhanced Reporting</li>
+        </ul>
+        <a href="#demo" class="btn-primary">Choose Plan</a>
+      </div>
+      <div class="p-8 bg-gray-800 rounded-xl border border-gray-700 transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-2xl font-bold text-white mb-4">Enterprise</h3>
+        <p class="text-4xl font-bold text-blue-400 mb-4">$99 <span class="text-xl text-gray-400">/mo</span></p>
+        <ul class="text-left text-gray-300 mb-6 space-y-2">
+          <li>All Professional Features</li>
+          <li>Custom Reporting & API</li>
+          <li>Dedicated Support</li>
+        </ul>
+        <a href="#demo" class="btn-primary">Contact Sales</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Integration Section -->
-<section class="bg-dark-200 py-24">
-    <!-- Integration content... -->
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-24 bg-gray-900">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-white mb-4" data-aos="fade-up">What Our Clients Say</h2>
+      <p class="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="100">
+        Real feedback from restaurant owners who trust BILL-MAKER.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div class="p-8 bg-gray-800 rounded-xl shadow-lg" data-aos="fade-up">
+        <p class="text-lg text-gray-300 mb-4">
+          "BILL-MAKER streamlined our billing process and its intuitive dashboard transformed our daily operations."
+        </p>
+        <div class="flex items-center">
+          <img src="{% static 'img/testimonial1.jpg' %}" alt="Client" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <p class="text-white font-bold">Alex Johnson</p>
+            <p class="text-gray-400 text-sm">Owner, Gourmet Bistro</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-8 bg-gray-800 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+        <p class="text-lg text-gray-300 mb-4">
+          "The advanced analytics and reporting features gave us a competitive edge."
+        </p>
+        <div class="flex items-center">
+          <img src="{% static 'img/testimonial2.jpg' %}" alt="Client" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <p class="text-white font-bold">Maria Garcia</p>
+            <p class="text-gray-400 text-sm">Manager, Urban Diner</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-24 bg-gray-950">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-white mb-4" data-aos="fade-up">Frequently Asked Questions</h2>
+      <p class="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="100">
+        Common queries answered to help you get started.
+      </p>
+    </div>
+    <div class="space-y-8">
+      <div class="p-6 bg-gray-800 rounded-xl" data-aos="fade-up">
+        <h3 class="text-2xl font-bold text-white mb-2">How do I customize my bills?</h3>
+        <p class="text-gray-300">Easily modify templates and parameters through our admin dashboard.</p>
+      </div>
+      <div class="p-6 bg-gray-800 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-2xl font-bold text-white mb-2">Can I integrate with my existing POS?</h3>
+        <p class="text-gray-300">Yes, our API allows seamless integration with most POS systems.</p>
+      </div>
+      <div class="p-6 bg-gray-800 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-2xl font-bold text-white mb-2">What support is provided?</h3>
+        <p class="text-gray-300">We offer 24/7 support and dedicated account managers for enterprise clients.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Contact Section -->
-<section class="bg-dark-100 py-24">
-    <!-- Contact form... -->
+<section id="contact" class="py-24 bg-gray-900">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-white mb-4" data-aos="fade-up">Get In Touch</h2>
+      <p class="text-xl text-gray-400" data-aos="fade-up" data-aos-delay="100">
+        Request a demo, ask questions, or get personalized pricing.
+      </p>
+    </div>
+    <form class="space-y-6" data-aos="fade-up" data-aos-delay="200">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label for="name" class="block text-gray-300 mb-1">Name</label>
+          <input type="text" id="name" name="name" class="w-full p-3 rounded-lg bg-gray-800 text-gray-100 border border-gray-700 focus:outline-none focus:border-blue-500">
+        </div>
+        <div>
+          <label for="email" class="block text-gray-300 mb-1">Email</label>
+          <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-gray-800 text-gray-100 border border-gray-700 focus:outline-none focus:border-blue-500">
+        </div>
+      </div>
+      <div>
+        <label for="message" class="block text-gray-300 mb-1">Message</label>
+        <textarea id="message" name="message" rows="5" class="w-full p-3 rounded-lg bg-gray-800 text-gray-100 border border-gray-700 focus:outline-none focus:border-blue-500"></textarea>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn-primary">Send Message</button>
+      </div>
+    </form>
+  </div>
 </section>
-
 {% endblock %}
 
 {% block extra_js %}
 <script src="{% static 'src/main.js' %}"></script>
 {% endblock %}
+

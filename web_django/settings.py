@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'theme',  # Changed from 'tailwind2' to 'theme'
 ]
 
+# For auto reload in development, add django-livereload-server
+if DEBUG:
+    INSTALLED_APPS += ['livereload']
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
