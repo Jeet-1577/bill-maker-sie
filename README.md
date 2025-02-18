@@ -22,8 +22,8 @@ A modern restaurant management and billing solution built with Django and Tailwi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_NEW_USERNAME/YOUR_NEW_REPO.git
-cd YOUR_NEW_REPO
+git clone https://github.com/Jeet-1577/bill-maker-sie.git
+cd bill-maker-sie
 ```
 
 2. Install Python dependencies:
