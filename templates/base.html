@@ -1,0 +1,98 @@
+{% load static %}
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}RestoBill - Restaurant Management Software{% endblock %}</title>
+    {% tailwind_css %}
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-dark-200 text-white">
+    <!-- Navigation -->
+    <nav x-data="{ isOpen: false }" class="bg-white fixed w-full z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-2xl font-bold text-blue-600">RestoBill</a>
+                </div>
+                
+                <!-- Desktop nav -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-blue-600">Features</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-blue-600">Pricing</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600">Contact</a>
+                    <a href="#demo" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                        Request Demo
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button @click="isOpen = !isOpen" class="text-gray-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            <path x-show="isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div x-show="isOpen" class="md:hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#features" class="block px-3 py-2 text-gray-600">Features</a>
+                <a href="#pricing" class="block px-3 py-2 text-gray-600">Pricing</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-600">Contact</a>
+                <a href="#demo" class="block px-3 py-2 bg-blue-600 text-white rounded-lg">Request Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="pt-16">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">RestoBill</h3>
+                    <p class="text-gray-400">Professional restaurant management software for modern businesses.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white">Features</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white">Pricing</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <p class="text-gray-400">Email: info@restobill.com</p>
+                    <p class="text-gray-400">Phone: +1 234 567 890</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p class="text-gray-400">&copy; 2024 RestoBill. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+    </script>
+</body>
+</html>

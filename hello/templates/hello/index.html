@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}BILL-MAKER - Smart Restaurant Management Software{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-dark-200 text-white relative overflow-hidden">
+    <!-- Gradient Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-dark-300 via-dark-200 to-dark-100"></div>
+    
+    <!-- Animated Grid Background -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="grid-pattern"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <h1 class="text-6xl lg:text-7xl font-bold mb-6">
+                    BILL-<span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-pink animate-gradient">MAKER</span>
+                </h1>
+                <p class="text-2xl text-gray-300 mb-8">
+                    Next-Gen Restaurant Management System with Advanced Billing & Analytics
+                </p>
+                <div class="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row">
+                    <a href="#demo" class="group px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-neon-blue/50">
+                        <span class="flex items-center justify-center">
+                            <svg class="w-6 h-6 mr-2 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                            Start Free Trial
+                        </span>
+                    </a>
+                    <a href="#features" class="px-8 py-4 border-2 border-neon-blue rounded-xl font-semibold hover:bg-neon-blue/10 transition-all duration-300">
+                        Explore Features
+                    </a>
+                </div>
+            </div>
+            <div class="hidden lg:block" data-aos="fade-left">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-neon-blue/20 to-neon-pink/20 blur-2xl animate-pulse"></div>
+                    <img src="{% static 'img/dashboard-preview.png' %}" alt="BILL-MAKER Dashboard" class="relative rounded-2xl shadow-2xl animate-float">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Showcase -->
+<section class="bg-dark-100 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl font-bold text-white mb-6" data-aos="fade-up">
+                Complete Restaurant Management Solution
+            </h2>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Everything you need to run your restaurant efficiently in one powerful platform
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature Cards -->
+            {% for feature in features %}
+            <div class="feature-card bg-dark-50 p-8 rounded-xl border border-neon-blue/20 hover:border-neon-blue/50 transition-all duration-500" data-aos="fade-up" data-aos-delay="{{ forloop.counter|multiply:100 }}">
+                <div class="w-14 h-14 bg-gradient-to-br from-neon-blue to-neon-purple rounded-lg flex items-center justify-center mb-6">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        {{ feature.icon|safe }}
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-4">{{ feature.title }}</h3>
+                <p class="text-gray-400">{{ feature.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Key Benefits -->
+<section class="bg-dark-200 py-24 relative overflow-hidden">
+    <!-- More sections... -->
+</section>
+
+<!-- Pricing Section -->
+<section class="bg-dark-100 py-24">
+    <!-- Pricing content... -->
+</section>
+
+<!-- Integration Section -->
+<section class="bg-dark-200 py-24">
+    <!-- Integration content... -->
+</section>
+
+<!-- Contact Section -->
+<section class="bg-dark-100 py-24">
+    <!-- Contact form... -->
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'src/main.js' %}"></script>
+{% endblock %}
