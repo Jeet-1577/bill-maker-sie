@@ -1,17 +1,40 @@
-# Environments
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+db.sqlite3
+*.sqlite3
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Node/Tailwind
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment
 .env
 .venv
 env/
 venv/
 ENV/
-env.bak/
-venv.bak/
 
-# Byte-compiled / optimized / DLL files
-__pycache__/
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
+# OS
+.DS_Store
+Thumbs.db
 
